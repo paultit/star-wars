@@ -1,0 +1,26 @@
+<mat-dialog-content>
+  <h2>Details information</h2>
+  <ng-container
+    *ngTemplateOutlet="dynamicContent; context: { data: data }"
+  ></ng-container>
+</mat-dialog-content>
+
+<ng-template #dynamicContent let-data="data">
+  <div>Name: {{ data.data.name }}</div>
+  <div>Date: {{ data.data.created | date : "dd.MM.yyyy" }}</div>
+  <div *ngIf="data && data?.type === 'starship'">
+    <div>Starship class: {{ data.data.starship_class }}</div>
+    <div>Passengers:{{ data.data.passengers }}</div>
+    <div>Length: {{ data.data.length }}</div>
+  </div>
+  <div *ngIf="data && data?.type === 'character'">
+    <div>Gender: {{ data.data.gender }}</div>
+    <div>Height: {{ data.data.height }}</div>
+    <div>Mass: {{ data.data.mass }}</div>
+  </div>
+  <div *ngIf="data && data?.type === 'planet'">
+    <div>Climate: {{ data.data.climate }}</div>
+    <div>Gravity: {{ data.data.gravity }}</div>
+    <div>Population: {{ data.data.population }}</div>
+  </div>
+</ng-template>

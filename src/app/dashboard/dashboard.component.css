@@ -1,0 +1,43 @@
+.buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-button {
+  margin-left: 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+.edit-button {
+  margin-left: 10px;
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.read-button {
+  margin-left: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.read-button:hover {
+  background-color: #218838; /* Новый цвет фона при наведении */
+}

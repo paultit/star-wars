@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+  <span class="user-section" *ngIf="user$ | async as user">
+    <span>{{ user?.name }}</span>
+    <button mat-button (click)="logout()">Logout</button>
+  </span>
+</mat-toolbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

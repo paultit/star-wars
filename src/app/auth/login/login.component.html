@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="login()">
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Username"
+                [(ngModel)]="username"
+                name="username"
+                required
+                autocomplete="off"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                type="password"
+                placeholder="Password"
+                [(ngModel)]="password"
+                name="password"
+                required
+                autocomplete="off"
+              />
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">
+              Log In
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<!-- Page content -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Film Details</h2>
+    </div>
+    <div class="col-md-12 mb-4">
+      <mat-card class="mb-3">
+        <mat-card-header>
+          <mat-card-title>{{ movie?.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Description: {{ movie?.opening_crawl }}</p>
+          <p>Release Date: {{ movie?.release_date | date : "dd.MM.yyyy" }}</p>
+        </mat-card-content>
+      </mat-card>
+      <button mat-button color="primary" routerLink="/dashboard">Back</button>
+    </div>
+
+    <div class="col-md-12 mb-4">
+      <h3>Starships</h3>
+      <table
+        mat-table
+        [dataSource]="movieStarships"
+        matSort
+        class="mat-elevation-z8"
+        #sortStarships="matSort"
+        [matSortActive]="'name'"
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let starship">{{ starship.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="starshipClass">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Starship Class
+          </th>
+          <td mat-cell *matCellDef="let starship">
+            {{ starship.starship_class }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="passengers">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Passengers</th>
+          <td mat-cell *matCellDef="let starship">{{ starship.passengers }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="length">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Length</th>
+          <td mat-cell *matCellDef="let starship">{{ starship.length }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef>Created</th>
+          <td mat-cell *matCellDef="let starship">
+            {{ starship.created | date : "dd.MM.yyyy" }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="starshipColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let data; columns: starshipColumns"
+          (click)="openModal(data, 'starship')"
+        ></tr>
+      </table>
+    </div>
+
+    <div class="col-md-12 mb-4">
+      <h3>Characters</h3>
+      <table
+        mat-table
+        [dataSource]="moviePeople"
+        matSort
+        class="mat-elevation-z8"
+        #sortCharacters="matSort"
+        [matSortActive]="'name'"
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let character">{{ character.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+          <td mat-cell *matCellDef="let character">
+            {{ character.gender }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="height">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Height</th>
+          <td mat-cell *matCellDef="let character">
+            {{ character.height }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mass">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Mass</th>
+          <td mat-cell *matCellDef="let character">{{ character.mass }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
+          <td mat-cell *matCellDef="let character">
+            {{ character.created | date : "dd.MM.yyyy" }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="characterColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let data; columns: characterColumns"
+          (click)="openModal(data, 'character')"
+        ></tr>
+      </table>
+    </div>
+    <div class="col-md-12">
+      <h3>Planets</h3>
+      <table
+        mat-table
+        [dataSource]="moviePlanets"
+        matSort
+        class="mat-elevation-z8"
+        #sortPlanets="matSort"
+        [matSortActive]="'name'"
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let planet">{{ planet.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="climate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Climate</th>
+          <td mat-cell *matCellDef="let planet">
+            {{ planet.climate }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gravity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gravity</th>
+          <td mat-cell *matCellDef="let planet">{{ planet.gravity }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="population">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Population</th>
+          <td mat-cell *matCellDef="let planet">{{ planet.population }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
+          <td mat-cell *matCellDef="let planet">
+            {{ planet.created | date : "dd.MM.yyyy" }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="planetColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let data; columns: planetColumns"
+          (click)="openModal(data, 'planet')"
+        ></tr>
+      </table>
+    </div>
+  </div>
+</div>
